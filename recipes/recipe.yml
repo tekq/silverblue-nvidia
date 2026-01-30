@@ -15,7 +15,8 @@ modules:
         - cosmic-desktop-environment
         - virtualization
     remove:
-      - firefox
+      packages:
+       - firefox
 
   - type: systemd
     system:
