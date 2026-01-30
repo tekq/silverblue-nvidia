@@ -9,10 +9,8 @@ modules:
     install:
       - "@cosmic-desktop-environment"
 
+      - "@virtualization"
       - distrobox
-      - virt-manager
-      - libvirt
-      - qemu-kvm
 
       - steam-devices
     remove:
