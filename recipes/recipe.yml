@@ -22,6 +22,6 @@ modules:
     system:
       enabled:
         - libvirtd.service
-        - com.system76.CosmicGreeter.service      
+        - cosmic-greeter      
         
   - type: signing
