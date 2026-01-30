@@ -5,14 +5,15 @@ base-image: ghcr.io/ublue-os/base-nvidia
 image-version: latest
 
 modules:
-  - type: rpm-ostree
+  - type: dnf
     install:
-      - "@cosmic-desktop-environment"
-
-      - "@virtualization"
-      - distrobox
-
-      - steam-devices
+      packages:
+        - distrobox
+        - steam-devices
+    group-install:
+      packages:
+        - @cosmic-desktop-environment
+        - @virtualization
     remove:
       - firefox
 
