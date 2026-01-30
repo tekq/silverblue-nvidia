@@ -19,8 +19,9 @@ modules:
       - firefox
 
   - type: systemd
-    units:
-      - libvirtd.service
-      - com.system76.CosmicGreeter.service
-      
+    system:
+      enabled:
+        - libvirtd.service
+        - com.system76.CosmicGreeter.service      
+        
   - type: signing
