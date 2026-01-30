@@ -12,8 +12,8 @@ modules:
         - steam-devices
     group-install:
       packages:
-        - @cosmic-desktop-environment
-        - @virtualization
+        - cosmic-desktop-environment
+        - virtualization
     remove:
       - firefox
 
