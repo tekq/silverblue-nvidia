@@ -54,5 +54,6 @@ modules:
       enabled:
         - libvirtd.service
         - cosmic-greeter      
+        - scx_loader.service
     
   - type: signing
