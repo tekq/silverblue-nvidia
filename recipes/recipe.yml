@@ -38,9 +38,9 @@ modules:
        - gnome-system-monitor
        - setroubleshoot
        
-  - type: script
+  - type: scriptkernel-cachyos-lto kernel-cachyos-lto-devel-matched
     snippets:
-      - "dnf install -y --repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel-cachyos-lto kernel-cachyos-lto-core kernel-cachyos-lto-modules kernel-cachyos-lto-modules-core"
+      - "dnf install -y --repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel-cachyos-lto kernel-cachyos-lto-devel-matched"
       - "KVER=$(rpm -q --queryformat='%{VERSION}-%{RELEASE}.%{ARCH}' kernel-cachyos-lto-core | head -n 1)"
       - "depmod -a $KVER"
       - "rpm-ostree override replace --from repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel=kernel-cachyos-lto kernel-core=kernel-cachyos-lto-core kernel-modules=kernel-cachyos-lto-modules kernel-modules-core=kernel-cachyos-lto-modules-core kernel-modules-extra=kernel-cachyos-lto-modules"
