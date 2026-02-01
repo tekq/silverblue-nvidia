@@ -34,18 +34,9 @@ dnf -y install --setopt=install_weak_deps=False \
 
 dnf -y swap zram-generator-defaults cachyos-settings
 
-VER=$(ls /lib/modules | grep cachy | head -n 1)
-
-if [ -z "$VER" ]; then
-    echo "Error: No kernel found in /lib/modules"
-    exit 1
-fi
-
-echo "Building modules for $VER..."
-akmods --force --kernels "$VER" --kmod nvidia
-
-depmod -a "$VER"
-dracut --kver "$VER" --force --add ostree --no-hostonly --reproducible "/usr/lib/modules/$VER/initramfs.img"
+VER=$(ls /lib/modules) && \
+    akmods --force --kernels $VER --kmod nvidia && \
+    depmod -a $VER && \
+    dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
+    
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
-
-echo "Build complete for CachyOS LTO kernel: $VER"
