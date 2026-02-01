@@ -42,6 +42,17 @@ modules:
         - kernel-modules-extra
     install:
       packages:
+        - clang
+        - lld
+        - llvm
+        - make
+        - bison
+        - flex
+        - openssl-devel
+        - elfutils-libelf-devel
+        - perl-interpreter
+    install:
+      packages:
       - repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
         packages:
           - kernel-cachyos-lto
