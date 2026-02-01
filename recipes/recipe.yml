@@ -24,6 +24,8 @@ modules:
        - virt-viewer
        - okular
        - libreoffice
+       - libreoffice-core
+       - libreoffice-data
        - nvtop
        - gnome-system-monitor
        - setroubleshoot
