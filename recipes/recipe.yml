@@ -44,10 +44,10 @@ modules:
         packages:
         - repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
           packages:
-          - kernel-cachyos-lto
-          - kernel-cachyos-lto-core
-          - kernel-cachyos-lto-modules
-          - kernel-cachyos-lto-modules-extra
+            - kernel-cachyos-lto
+            - kernel-cachyos-lto-core
+            - kernel-cachyos-lto-modules
+            - kernel-cachyos-lto-modules-extra
           
   - type: default-flatpaks
     configurations:
