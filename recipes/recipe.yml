@@ -5,6 +5,11 @@ base-image: ghcr.io/ublue-os/base-nvidia
 image-version: latest
 
 modules:
+  - type: script
+    snippets:
+      - "mkdir -p /run/procs; touch /run/procs/1"
+      - "mkdir -p /var/tmp"
+      
   - type: dnf
     repos:
       copr:
@@ -33,33 +38,20 @@ modules:
        - gnome-system-monitor
        - setroubleshoot
        
-  - type: dnf
-    remove:
+    replace:
+    - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
       packages:
-        - kernel
-        - kernel-core
-        - kernel-modules
-        - kernel-modules-extra
-    install:
-      packages:
-        - clang
-        - lld
-        - llvm
-        - make
-        - bison
-        - flex
-        - openssl-devel
-        - elfutils-libelf-devel
-        - perl-interpreter
-    install:
-      packages:
-      - repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
-        packages:
-          - kernel-cachyos-lto
-          - kernel-cachyos-lto-core
-          - kernel-cachyos-lto-modules
-          - kernel-cachyos-lto-devel-matched
-          
+        - old: kernel
+          new: kernel-cachyos-lto
+        - old: kernel-core
+          new: kernel-cachyos-lto-core
+        - old: kernel-modules
+          new: kernel-cachyos-lto-modules
+        - old: kernel-modules-core
+          new: kernel-cachyos-lto-modules-core
+        - old: kernel-modules-extra
+          new: kernel-cachyos-lto-modules
+            
   - type: default-flatpaks
     configurations:
       - scope: user
