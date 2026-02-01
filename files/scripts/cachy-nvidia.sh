@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-dnf -y remove kernel kernel-* --allowerasing
+dnf -y remove kernel kernel-*
 rm -rf /usr/lib/modules/*
 
 dnf -y install --setopt=install_weak_deps=False dnf-plugins-core dnf5-plugins
