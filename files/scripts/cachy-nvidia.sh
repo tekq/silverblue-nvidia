@@ -2,14 +2,21 @@
 
 set -euo pipefail
 
-dnf -y remove kernel kernel-*
+dnf -y remove kernel kernel-* --allowerasing
 rm -rf /usr/lib/modules/*
 
 dnf -y install --setopt=install_weak_deps=False dnf-plugins-core dnf5-plugins
+
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
-dnf -y config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
-dnf -y config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo
+
+if [ ! -f /etc/yum.repos.d/negativo17-fedora-multimedia.repo ]; then
+    dnf -y config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo || true
+fi
+
+if [ ! -f /etc/yum.repos.d/terra.repo ]; then
+    dnf -y config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo || true
+fi
 
 dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto \
@@ -31,4 +38,7 @@ akmods --force --kernels "$KVER"
 depmod -a "$KVER"
 dracut --kver "$KVER" --force --add ostree --no-hostonly --reproducible "/usr/lib/modules/$KVER/initramfs.img"
 
-rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
+rm -f /etc/yum.repos.d/bieszczaders-kernel-cachyos-lto.repo
+rm -f /etc/yum.repos.d/bieszczaders-kernel-cachyos-addons.repo
+rm -f /etc/yum.repos.d/negativo17-fedora-multimedia.repo
+rm -f /etc/yum.repos.d/terra.repo
