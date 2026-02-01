@@ -38,19 +38,12 @@ modules:
        - gnome-system-monitor
        - setroubleshoot
        
-    replace:
-    - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
-      packages:
-        - old: kernel
-          new: kernel-cachyos-lto
-        - old: kernel-core
-          new: kernel-cachyos-lto-core
-        - old: kernel-modules
-          new: kernel-cachyos-lto-modules
-        - old: kernel-modules-core
-          new: kernel-cachyos-lto-modules-core
-        - old: kernel-modules-extra
-          new: kernel-cachyos-lto-modules
+  - type: script
+    snippets:
+      - "dnf install -y --repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel-cachyos-lto kernel-cachyos-lto-core kernel-cachyos-lto-modules kernel-cachyos-lto-modules-core"
+      - "KVER=$(rpm -q --queryformat='%{VERSION}-%{RELEASE}.%{ARCH}' kernel-cachyos-lto-core | head -n 1)"
+      - "depmod -a $KVER"
+      - "rpm-ostree override replace --from repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel=kernel-cachyos-lto kernel-core=kernel-cachyos-lto-core kernel-modules=kernel-cachyos-lto-modules kernel-modules-core=kernel-cachyos-lto-modules-core kernel-modules-extra=kernel-cachyos-lto-modules"
             
   - type: default-flatpaks
     configurations:
