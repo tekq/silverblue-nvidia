@@ -40,7 +40,7 @@ modules:
        
   - type: script
     snippets:
-      - "dnf install -y --repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel-cachyos-lto kernel-cachyos-lto-core kernel-cachyos-lto-modules kernel-cachyos-lto-devel-matched kernel-cachyos-lto-nvidia-open"
+      - "dnf install -y kernel-cachyos-lto kernel-cachyos-lto-core kernel-cachyos-lto-modules kernel-cachyos-lto-devel-matched kernel-cachyos-lto-nvidia-open"
       - "KVER=$(rpm -q --queryformat='%{VERSION}-%{RELEASE}.%{ARCH}' kernel-cachyos-lto-core | head -n 1)"
       - "depmod -a $KVER"
       - "rpm-ostree override replace --from repo=copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto kernel=kernel-cachyos-lto kernel-core=kernel-cachyos-lto-core kernel-modules=kernel-cachyos-lto-modules kernel-modules-extra=kernel-cachyos-lto-modules"
