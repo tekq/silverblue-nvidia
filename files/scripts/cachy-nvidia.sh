@@ -23,11 +23,10 @@ dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto-core \
     kernel-cachyos-lto-modules \
     kernel-cachyos-lto-devel \
-    akmod-nvidia \
+    kernel-cachyos-lto-nvidia-open \
     nvidia-driver \
     nvidia-driver-cuda \
     nvidia-settings \
-    akmods \
     zenergy \
     scx-scheds
 
