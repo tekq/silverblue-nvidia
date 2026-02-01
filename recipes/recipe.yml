@@ -36,14 +36,15 @@ modules:
     replace:
     - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
       packages:
-        - old: kernel
-          new: kernel-cachyos-lto
         - old: kernel-core
           new: kernel-cachyos-lto-core
         - old: kernel-modules
           new: kernel-cachyos-lto-modules
         - old: kernel-modules-extra
-          new: kernel-cachyos-lto-modules-extra   
+          new: kernel-cachyos-lto-modules-extra
+        - old: kernel
+          new: kernel-cachyos-lto
+
           
   - type: default-flatpaks
     configurations:
