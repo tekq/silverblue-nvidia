@@ -35,15 +35,13 @@ modules:
        
   - type: dnf
     repos:
-      - copr:bieszczaders/kernel-cachyos-lto
+      - copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
     remove:
-      # We remove the meta-package to break the dependency lock
       - kernel
       - kernel-core
       - kernel-modules
       - kernel-modules-extra
     install:
-      # Now we install the CachyOS versions
       - kernel-cachyos-lto
       - kernel-cachyos-lto-core
       - kernel-cachyos-lto-modules
