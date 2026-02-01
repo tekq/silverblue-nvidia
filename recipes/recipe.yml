@@ -34,18 +34,20 @@ modules:
        - setroubleshoot
        
   - type: dnf
-    repos:
-      - copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
     remove:
-      - kernel
-      - kernel-core
-      - kernel-modules
-      - kernel-modules-extra
-    install:
-      - kernel-cachyos-lto
-      - kernel-cachyos-lto-core
-      - kernel-cachyos-lto-modules
-      - kernel-cachyos-lto-modules-extra
+      packages:
+        - kernel
+        - kernel-core
+        - kernel-modules
+        - kernel-modules-extra
+      install:
+        packages:
+        - repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-lto
+          packages:
+          - kernel-cachyos-lto
+          - kernel-cachyos-lto-core
+          - kernel-cachyos-lto-modules
+          - kernel-cachyos-lto-modules-extra
           
   - type: default-flatpaks
     configurations:
