@@ -27,7 +27,6 @@ dnf -y install --setopt=install_weak_deps=False \
     nvidia-driver \
     nvidia-driver-cuda \
     nvidia-settings \
-    akmod-nvidia \
     akmods \
     scx-scheds \
     scx-tools \
