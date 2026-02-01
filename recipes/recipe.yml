@@ -28,21 +28,21 @@ modules:
        - gnome-system-monitor
        - setroubleshoot
 
-- type: default-flatpaks
-  configurations:
-    - scope: user
-      repo:
-        title: Flathub (user)
-    - notify: true
-      scope: system
-      repo:
-        title: Flathub (system)
-      install:
-        - app.zen_browser.zen
-        - im.nheko.Nheko
-        - org.kde.okular
-        - org.libreoffice.LibreOffice
-        
+  - type: default-flatpaks
+    configurations:
+      - scope: user
+        repo:
+          title: Flathub (user)
+      - notify: true
+        scope: system
+        repo:
+          title: Flathub (system)
+        install:
+          - app.zen_browser.zen
+          - im.nheko.Nheko
+          - org.kde.okular
+          - org.libreoffice.LibreOffice
+          
   - type: systemd
     system:
       enabled:
