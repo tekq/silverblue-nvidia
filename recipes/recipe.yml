@@ -38,7 +38,13 @@ modules:
       packages:
         - old: kernel
           new: kernel-cachyos-lto
-        
+        - old: kernel-core
+          new: kernel-cachyos-lto-core
+        - old: kernel-modules
+          new: kernel-cachyos-lto-modules
+        - old: kernel-modules-extra
+          new: kernel-cachyos-lto-modules-extra   
+          
   - type: default-flatpaks
     configurations:
       - scope: user
