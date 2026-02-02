@@ -48,6 +48,7 @@ modules:
           - im.nheko.Nheko
           - org.kde.okular
           - org.libreoffice.LibreOffice
+          - it.mijorus.gearlever
           
   - type: systemd
     system:
