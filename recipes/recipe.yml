@@ -21,6 +21,14 @@ modules:
     group-install:
       packages:
         - virtualization
+    remove:
+      packages:
+        - malcontent
+        - gnome-tour
+        - nvtop
+        - htop
+        - virt-viewer
+        
         
   - type: script
     scripts:
@@ -36,7 +44,6 @@ modules:
         repo:
           title: Flathub (system)
         install:
-          - app.zen_browser.zen
           - app.devsuite.Ptyxis
           - im.nheko.Nheko
           - org.kde.okular
