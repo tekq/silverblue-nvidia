@@ -6,8 +6,8 @@ image-version: latest
 
 modules:    
   - type: dnf
-    copr:
-      enable:
+    repos:
+      copr:
         - name: trixieua/mutter-patched
     install:
       packages:
