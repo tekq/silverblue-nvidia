@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-    
+
+dnf -y remove --noautoremove \
+    kernel \
+    kernel-*
+
 rm -rf /usr/lib/modules/*
 
 dnf -y install --setopt=install_weak_deps=False \
@@ -31,10 +35,5 @@ VER=$(ls /lib/modules | grep cachy) && \
     akmods --force --kernels $VER --kmod nvidia && \
     depmod -a $VER && \
     dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
-
-
-dnf -y remove \
-    kernel \
-    kernel-devel
     
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
