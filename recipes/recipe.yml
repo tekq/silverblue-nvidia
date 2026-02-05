@@ -15,8 +15,7 @@ modules:
         - gnome-software
         - nautilus
         - gdm
-    install:
-      packages:
+        
         - distrobox
         - steam-devices
     group-install:
