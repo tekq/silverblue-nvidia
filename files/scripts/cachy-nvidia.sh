@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-
-dnf -y remove \
-    kernel \
-    kernel-* 
     
 rm -rf /usr/lib/modules/*
 
@@ -20,19 +16,18 @@ dnf -y config-manager addrepo --from-repofile=https://raw.githubusercontent.com/
 
 dnf -y install --setopt=install_weak_deps=False akmods
 
+dnf -y swap kernel kernel-cachyos-lto
+
+dnf -y swap kernel-devel kernel-cachyos-lto-devel
+
+dnf -y swap zram-generator-defaults cachyos-settings
+
+
 dnf -y install --setopt=install_weak_deps=False \
-    kernel-cachyos-lto \
-    kernel-cachyos-lto-devel \
-    kernel-cachyos-lto-core \
-    kernel-cachyos-lto-modules \
-    kernel-cachyos-lto-nvidia-open \
-    nvidia-driver-libs \
-    nvidia-settings \
     scx-scheds \
     scx-tools \
     scx-manager
 
-dnf -y swap zram-generator-defaults cachyos-settings
 
 VER=$(ls /lib/modules) && \
     akmods --force --kernels $VER --kmod nvidia && \
