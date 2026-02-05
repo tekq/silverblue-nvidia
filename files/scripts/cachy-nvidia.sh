@@ -27,7 +27,7 @@ dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto-modules \
     kernel-cachyos-lto-nvidia-open \
     nvidia-driver-libs \
-    nvidia-settings
+    nvidia-settings \
     scx-scheds \
     scx-tools \
     scx-manager
