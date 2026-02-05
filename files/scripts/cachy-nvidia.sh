@@ -28,7 +28,7 @@ dnf -y install --setopt=install_weak_deps=False \
     
 dnf -y swap zram-generator-defaults cachyos-settings
 
-VER=$(ls /lib/modules) && \
+VER=$(ls /lib/modules | grep cachy) && \
     akmods --force --kernels $VER --kmod nvidia && \
     depmod -a $VER && \
     dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
