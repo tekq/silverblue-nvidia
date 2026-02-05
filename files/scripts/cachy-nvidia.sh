@@ -18,6 +18,8 @@ dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo || true
 dnf -y config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo || true
 
+dnf -y install --setopt=install_weak_deps=False akmods
+
 dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto \
     kernel-cachyos-lto-devel \
@@ -26,7 +28,6 @@ dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto-nvidia-open \
     nvidia-driver-libs \
     nvidia-settings
-    akmods \
     scx-scheds \
     scx-tools \
     scx-manager
