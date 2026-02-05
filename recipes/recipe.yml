@@ -49,7 +49,6 @@ modules:
     system:
       enabled:
         - libvirtd.service
-        - gdm.service  
         - scx_loader.service
     
   - type: signing
