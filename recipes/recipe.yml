@@ -8,7 +8,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        - name: trixieua/mutter-patched
+        - 'trixieua/mutter-patched'
     install:
       packages:
         - gnome-shell
