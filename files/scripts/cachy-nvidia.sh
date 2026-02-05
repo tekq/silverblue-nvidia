@@ -35,7 +35,7 @@ VER=$(ls /lib/modules | grep cachy) && \
 
 
 dnf -y remove \
-    kernel
+    kernel \
     kernel-devel
     
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
