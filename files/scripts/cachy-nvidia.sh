@@ -24,7 +24,6 @@ dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto-core \
     kernel-cachyos-lto-modules \
     kernel-cachyos-lto-nvidia-open \
-    xorg-x11-drv-nvidia-cuda \
     nvidia-driver-libs \
     nvidia-settings
     akmods \
