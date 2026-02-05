@@ -8,28 +8,18 @@ modules:
   - type: dnf
     install:
       packages:
+        - gnome-shell
+        - gnome-software
+        - nautilus
+        - gdm
+    install:
+      packages:
         - distrobox
         - steam-devices
     group-install:
       packages:
-        - cosmic-desktop-environment
         - virtualization
-    remove:
-      packages:
-       - firefox
-       - nheko
-       - thunderbird
-       - im-chooser
-       - rhythmbox
-       - virt-viewer
-       - okular
-       - libreoffice
-       - libreoffice-core
-       - libreoffice-data
-       - nvtop
-       - gnome-system-monitor
-       - setroubleshoot
-       
+        
   - type: script
     scripts:
       - cachy-nvidia.sh
@@ -45,16 +35,21 @@ modules:
           title: Flathub (system)
         install:
           - app.zen_browser.zen
+          - app.devsuite.Ptyxis
           - im.nheko.Nheko
           - org.kde.okular
           - org.libreoffice.LibreOffice
           - it.mijorus.gearlever
           
+  - type: script
+    snippets:
+      - "systemctl set-default graphical.target"
+    
   - type: systemd
     system:
       enabled:
         - libvirtd.service
-        - cosmic-greeter      
+        - gdm.service  
         - scx_loader.service
     
   - type: signing
