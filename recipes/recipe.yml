@@ -6,6 +6,9 @@ image-version: latest
 
 modules:    
   - type: dnf
+    copr:
+      enable:
+        - name: trixieua/mutter-patched
     install:
       packages:
         - gnome-shell
