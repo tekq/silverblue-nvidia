@@ -45,6 +45,7 @@ modules:
           - org.kde.okular
           - org.libreoffice.LibreOffice
           - it.mijorus.gearlever
+          - com.github.tchx84.Flatseal
           
   - type: script
     snippets:
