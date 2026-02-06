@@ -9,6 +9,6 @@ dnf -y install --setopt=install_weak_deps=False \
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 
-rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra --install kernel-cachyos-lto
+rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra --install kernel-cachyos-lto kernel-cachyos-lto-core kernel-cachyos-lto-modules
 
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
