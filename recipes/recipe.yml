@@ -28,11 +28,6 @@ modules:
         - nvtop
         - htop
         - virt-viewer
-        
-        
-  - type: script
-    scripts:
-      - cachy-nvidia.sh
 
   - type: default-flatpaks
     configurations:
@@ -58,6 +53,5 @@ modules:
     system:
       enabled:
         - libvirtd.service
-        - scx_loader.service
     
   - type: signing
