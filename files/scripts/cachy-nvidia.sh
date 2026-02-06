@@ -2,12 +2,6 @@
 
 set -euo pipefail
 
-dnf -y remove --noautoremove \
-    kernel \
-    kernel-*
-
-rm -rf /usr/lib/modules/*
-
 dnf -y install --setopt=install_weak_deps=False \
     dnf-plugins-core \
     dnf5-plugins
@@ -15,30 +9,6 @@ dnf -y install --setopt=install_weak_deps=False \
 dnf -y copr enable bieszczaders/kernel-cachyos-lto
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 
-dnf -y config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo || true
-dnf -y config-manager addrepo --from-repofile=https://raw.githubusercontent.com/terrapkg/subatomic-repos/main/terra.repo || true
-
-dnf -y install --setopt=install_weak_deps=False \
-    kernel-cachyos-lto \
-    kernel-cachyos-lto-devel \
-    kernel-cachyos-lto-core \
-    kernel-cachyos-lto-modules \
-    scx-scheds \
-    scx-tools \
-    scx-manager
-    
-dnf -y swap zram-generator-defaults cachyos-settings
-
-dnf -y install \
-    kmod-nvidia \
-    nvidia-driver \
-    nvidia-driver-cuda \
-    nvidia-kmod-common \
-    nvidia-settings
-
-VER=$(ls /lib/modules) && \
-akmods --force --kernels $VER && \
-depmod -a $VER && \
-dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
+rpm-ostree -y override remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra --install kernel-cachyos
 
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
