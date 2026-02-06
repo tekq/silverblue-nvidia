@@ -23,6 +23,7 @@ dnf -y install --setopt=install_weak_deps=False \
     kernel-cachyos-lto-devel \
     kernel-cachyos-lto-core \
     kernel-cachyos-lto-modules \
+    kernel-cachyos-lto-nvidia-open \
     nvidia-driver-libs \
     nvidia-settings \
     scx-scheds \
@@ -35,5 +36,7 @@ VER=$(ls /lib/modules | grep cachy) && \
     akmods --force --kernels $VER --kmod nvidia && \
     depmod -a $VER && \
     dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
-    
+
+dnf -y remove kernel-cachyos-lto-nvidia-open
+
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
