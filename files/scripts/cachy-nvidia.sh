@@ -29,16 +29,16 @@ dnf -y install --setopt=install_weak_deps=False \
     
 dnf -y swap zram-generator-defaults cachyos-settings
 
-VER=$(ls /lib/modules | grep cachy) && \
-    akmods --force --kernels $VER && \
-    depmod -a $VER && \
-    dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
-
 dnf -y install \
     kmod-nvidia \
     nvidia-driver \
     nvidia-driver-cuda \
     nvidia-kmod-common \
     nvidia-settings
+
+VER=$(ls /lib/modules) && \
+akmods --force --kernels $VER && \
+depmod -a $VER && \
+dracut --kver $VER --force --add ostree --no-hostonly --reproducible /usr/lib/modules/$VER/initramfs.img
 
 rm -f /etc/yum.repos.d/{*copr*,*multimedia*,*terra*}.repo
