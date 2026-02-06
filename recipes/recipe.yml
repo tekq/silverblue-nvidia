@@ -15,6 +15,7 @@ modules:
         - gnome-software
         - nautilus
         - gdm
+        - gnome-console
         
         - distrobox
         - steam-devices
